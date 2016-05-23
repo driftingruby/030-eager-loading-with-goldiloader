@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<legend>Listing Blogs</legend>
+
+<% @blogs.each do |blog| %>
+  <div>
+    <h4><%= link_to blog.name, blog %></h4>
+    <div>
+    <%= truncate(blog.content, length: 512, escape: false) %>
+    </div>
+    <div>
+      <% blog.tags.to_a.map(&:name).each do |tag| %>
+        <div class='badge'>
+          <%= tag %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Blog', new_blog_path %>
